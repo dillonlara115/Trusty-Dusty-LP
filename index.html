@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trusty Dusty Cleaning — Coming Soon</title>
+  <meta name="description" content="Trusty Dusty Cleaning — professional residential cleaning services coming soon to Ashland, Missouri and surrounding areas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Staatliches&display=swap" rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --yellow: #f9ec00;
+      --dark-blue: #07456b;
+      --medium-blue: #4a8ecc;
+      --orange: #f99d2d;
+      --light-blue: #bce6f7;
+      --white: #ffffff;
+      --bg-dark: #041e30;
+      --bg-darker: #021520;
+
+      --font-body: 'Lato', sans-serif;
+      --font-heading: 'Staatliches', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ---- MAIN LAYOUT ---- */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem;
+    }
+
+    /* ---- FLOATING BLOBS ---- */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .blob--1 {
+      width: 260px;
+      height: 260px;
+      background: var(--dark-blue);
+      top: -80px;
+      left: -60px;
+      border-radius: 40% 60% 55% 45% / 55% 40% 60% 45%;
+      animation: blobFloat1 8s ease-in-out infinite;
+    }
+
+    .blob--2 {
+      width: 200px;
+      height: 200px;
+      background: var(--dark-blue);
+      bottom: -60px;
+      right: -40px;
+      border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%;
+      animation: blobFloat2 9s ease-in-out infinite;
+    }
+
+    .blob--3 {
+      width: 120px;
+      height: 120px;
+      background: var(--orange);
+      bottom: -20px;
+      right: 80px;
+      opacity: 0.7;
+      border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+      animation: blobFloat1 7s ease-in-out infinite reverse;
+    }
+
+    .sphere {
+      position: fixed;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .sphere--1 {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 35% 35%, var(--light-blue), var(--medium-blue));
+      top: 8%;
+      left: 8%;
+      animation: sphereBob 4s ease-in-out infinite;
+      box-shadow: 0 8px 24px rgba(74, 142, 204, 0.4);
+    }
+
+    .sphere--2 {
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle at 35% 35%, var(--orange), #e07a10);
+      top: 14%;
+      right: 12%;
+      animation: sphereBob 5s ease-in-out infinite 1s;
+      box-shadow: 0 8px 24px rgba(249, 157, 45, 0.4);
+    }
+
+    .sphere--3 {
+      width: 30px;
+      height: 30px;
+      background: radial-gradient(circle at 35% 35%, var(--yellow), #d4c800);
+      bottom: 18%;
+      left: 15%;
+      animation: sphereBob 4.5s ease-in-out infinite 0.5s;
+      box-shadow: 0 8px 24px rgba(249, 236, 0, 0.3);
+    }
+
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(15px, 10px) rotate(5deg); }
+    }
+
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-12px, -8px) rotate(-4deg); }
+    }
+
+    @keyframes sphereBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* ---- CARD ---- */
+    .card {
+      position: relative;
+      z-index: 2;
+      background: var(--yellow);
+      border-radius: 20px;
+      max-width: 960px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 3.5rem 4rem;
+      gap: 2.5rem;
+      box-shadow:
+        0 40px 80px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+      animation: cardEntry 0.8s ease-out both;
+    }
+
+    @keyframes cardEntry {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ---- LEFT: LOGO ---- */
+    .card__logo-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.3s both;
+    }
+
+    .card__logo {
+      max-width: 260px;
+      width: 100%;
+      margin-bottom: 1.25rem;
+    }
+
+    .card__tagline {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark-blue);
+      opacity: 0.7;
+    }
+
+    /* ---- DIVIDER ---- */
+    .card__divider {
+      width: 4px;
+      height: 180px;
+      border-radius: 4px;
+      background: linear-gradient(to bottom, var(--dark-blue), var(--orange));
+      align-self: center;
+      animation: fadeIn 0.8s ease-out 0.4s both;
+    }
+
+    /* ---- RIGHT: CONTENT ---- */
+    .card__content {
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.5s both;
+    }
+
+    .card__heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      color: var(--dark-blue);
+      line-height: 1;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .card__subtext {
+      font-size: 1rem;
+      color: var(--dark-blue);
+      opacity: 0.7;
+      line-height: 1.6;
+      max-width: 320px;
+      margin: 0 auto 2rem;
+    }
+
+    .card__contact-label {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dark-blue);
+      opacity: 0.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .card__contact-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--dark-blue);
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(7, 69, 107, 0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(7, 69, 107, 0.18);
+    }
+
+    .contact-chip svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--medium-blue);
+      flex-shrink: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- FOOTER (below card) ---- */
+    .page__footer {
+      position: relative;
+      z-index: 2;
+      margin-top: 2rem;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.7s both;
+    }
+
+    .page__footer p {
+      font-size: 0.75rem;
+      color: var(--medium-blue);
+      opacity: 0.5;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .card {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 2rem;
+        gap: 1.5rem;
+        max-width: 440px;
+      }
+
+      .card__divider {
+        width: 140px;
+        height: 4px;
+        justify-self: center;
+        background: linear-gradient(to right, var(--dark-blue), var(--orange));
+      }
+
+      .card__logo {
+        max-width: 200px;
+      }
+
+      .card__heading {
+        font-size: 2.4rem;
+      }
+
+      .card__contact-items {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .blob--1 {
+        width: 160px;
+        height: 160px;
+        top: -50px;
+        left: -40px;
+      }
+
+      .blob--2 {
+        width: 130px;
+        height: 130px;
+        bottom: -40px;
+        right: -30px;
+      }
+
+      .blob--3 {
+        width: 80px;
+        height: 80px;
+        bottom: 10px;
+        right: 40px;
+      }
+
+      .sphere--1 { width: 40px; height: 40px; }
+      .sphere--2 { width: 28px; height: 28px; }
+      .sphere--3 { width: 22px; height: 22px; }
+    }
+
+    @media (max-width: 400px) {
+      .page {
+        padding: 1.25rem;
+      }
+
+      .card {
+        padding: 2rem 1.25rem;
+      }
+
+      .contact-chip {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- DECORATIVE BLOBS -->
+    <div class="blob blob--1" aria-hidden="true"></div>
+    <div class="blob blob--2" aria-hidden="true"></div>
+    <div class="blob blob--3" aria-hidden="true"></div>
+    <div class="sphere sphere--1" aria-hidden="true"></div>
+    <div class="sphere sphere--2" aria-hidden="true"></div>
+    <div class="sphere sphere--3" aria-hidden="true"></div>
+
+    <!-- MAIN CARD -->
+    <div class="card">
+      <div class="card__logo-area">
+        <img
+          src="assets/logo.png"
+          alt="Trusty Dusty Cleaning"
+          class="card__logo"
+        >
+        <p class="card__tagline">Residential Cleaning</p>
+      </div>
+
+      <div class="card__divider" aria-hidden="true"></div>
+
+      <div class="card__content">
+        <h1 class="card__heading">Coming Soon</h1>
+        <p class="card__subtext">
+          We're getting everything spotless behind the scenes so we can do the same for your home.
+        </p>
+        <p class="card__contact-label">Get In Touch</p>
+        <div class="card__contact-items">
+          <a href="tel:+15739885733" class="contact-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 0 0-1.02.24l-2.2 2.2a15.05 15.05 0 0 1-6.59-6.59l2.2-2.2a.96.96 0 0 0 .25-1A11.36 11.36 0 0 1 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
+            (573) 988-5733
+          </a>
+          <a href="mailto:mail@thymeuniversal.com" class="contact-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            mail@thymeuniversal.com
+          </a>
+          <span class="contact-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+            100 E Broadway Ste B, Ashland, MO 65010
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page__footer">
+      <p>&copy; 2026 Trusty Dusty Cleaning. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
